@@ -28,4 +28,29 @@ public class Member {
         dateJoined = DateOnly.FromDateTime(DateTime.Now);
         role = 4;
     }
+    public Member (CMember _member) {
+        memberId = _member.memberId;
+        firstName = _member.firstName;
+        lastName = _member.lastName;
+        email = _member.email;
+        password = _member.password;
+        role = _member.role;
+        dateJoined = _member.dateJoined;
+        phone = _member.phone;
+        addressLine1 = _member.addressLine1;
+        addressLine2 = _member.addressLine2;
+        city = _member.city;
+        state = _member.state;
+        postalCode = _member.postalCode;
+        country = _member.country;
+        dateBirth = _member.dateBirth;
+    }
+    public Member (CQMember _member) {
+        memberId = _member.memberId;
+        firstName = _member.firstName;
+        lastName = _member.lastName;
+        email = _member.email;
+        password = _member.password;
+        role = 4;
+    }
 }

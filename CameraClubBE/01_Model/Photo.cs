@@ -6,6 +6,7 @@ public class Photo
 {
     public Guid photoId { get; set; }
     public string filename { get; set; }
+    public Guid ownerId { get; set; }
     public string author { get; set; }
     public string title { get; set; }
     public string? caption { get; set; }
@@ -22,17 +23,19 @@ public class Photo
     public bool isColor { get; set; }
 
     public Photo() { }
-    public Photo(string _filename, string _author, string _title)
+    public Photo(string _filename, Guid _ownerId, string _author, string _title)
     {
         filename = _filename;
+        ownerId = _ownerId;
         author = _author;
         title = _title;
         photoId = Guid.NewGuid();
         isColor = true;
     }
-    public Photo(string _filename, string _author, string _title, bool _isColor)
+    public Photo(string _filename, Guid _ownerId, string _author, string _title, bool _isColor)
     {
         filename = _filename;
+        ownerId = _ownerId;
         author = _author;
         title = _title;
         photoId = Guid.NewGuid();
