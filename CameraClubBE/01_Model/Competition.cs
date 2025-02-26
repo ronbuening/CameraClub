@@ -28,4 +28,16 @@ public class Competition
         judges = _judges;
         competitionId = Guid.NewGuid();
     }
+        public Competition(string _name, string _description, DateTime _startEntryDate, DateTime _startJudgeDate, string _tag, List<Member> _judges)
+    {
+        name = _name;
+        description = _description;
+        startEntryDate = _startEntryDate;
+        endEntryDate = _startEntryDate+TimeSpan.FromDays(7);
+        startJudgeDate = _startJudgeDate;
+        endJudgeDate = _startEntryDate+TimeSpan.FromDays(7);
+        tag = _tag;
+        judges = _judges;
+        competitionId = Guid.NewGuid();
+    }
 }
