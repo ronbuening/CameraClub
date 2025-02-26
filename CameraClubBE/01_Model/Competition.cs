@@ -14,7 +14,7 @@ public class Competition
     public string tag { get; set; }
     public List<Photo>? entries { get; set; }
     public List<Member> judges { get; set; }
-
+    public List<Evaluation>? evaluations { get; set; }
     public Competition() { }
     public Competition(string _name, string _description, DateTime _startEntryDate, DateTime _endEntryDate, DateTime _startJudgeDate, DateTime _endJudgeDate, string _tag, List<Member> _judges)
     {

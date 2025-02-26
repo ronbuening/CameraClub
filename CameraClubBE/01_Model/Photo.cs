@@ -21,6 +21,8 @@ public class Photo
     public string? lensMake { get; set; }
     public string? lensModel { get; set; }
     public bool isColor { get; set; }
+    public List<Competition>? competitions { get; set; }
+    public List<Evaluation>? evaluations { get; set; }
 
     public Photo() { }
     public Photo(string _filename, Guid _ownerId, string _author, string _title)
