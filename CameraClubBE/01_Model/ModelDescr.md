@@ -16,10 +16,16 @@ This object contains all the member details including name, contact info, club i
     - Optional, will default to least permissive
     - Permissions will go from 0 to 4 inclusive with most permissions given with lower number
         - 0: System Admin
+            - Full rights
         - 1: Club Admin
+            - Can create new members, assign roles, act as judge, and view all uploaded photos for moderation purposes
         - 2: Club Judge
+            - Can leave ratings and comments on images entered to competitions for which they are assigned as judge and act as regular club members
+            - Disallowed from leaving ratings and comments on their own photos in competition
         - 3: Club Member
+            - Can upload photos, enter competitions, and review all results
         - 4: Club Viewer
+            - Can view closed competitions and results
 - DateOnly? dateJoined
     - Date first active in club
 - string? phone
@@ -31,6 +37,11 @@ This object contains all the member details including name, contact info, club i
 - string? country
 - DateOnly? dateBirth
     - Only if really desired by club mgmt
+##### Related DTO
+- CMember
+    - Full member creation (all required and optional fields)
+- CQMember
+    - Quick member creation (only required fields)
 
 ### Photo
 This object defines an uploaded photograph and specific attributes
@@ -59,3 +70,5 @@ This object defines an uploaded photograph and specific attributes
 - string? lensModel
 - bool isColor
     - Required, determines if eligible for color or monochrome categories
+##### Related DTO
+- UPhoto (required fields only)(not implemented)
