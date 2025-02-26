@@ -47,11 +47,11 @@ This object contains all the member details including name, contact info, club i
 This object defines an uploaded photograph and specific attributes
 #### Photo Attributes
 - Guid photoId
-    - Required, assigned at object creation
+    - Required, will serve as PK for photo records, assigned at object creation
 - string filename
     - Required, where the image is stored
 - Guid ownerId
-    - Required, Guid for uploading member
+    - Required, FK for relation to member records, Guid for uploading member
 - string author
     - Required, display name for galleries and competitions. Derived from ownerId record
 - string title
@@ -72,3 +72,28 @@ This object defines an uploaded photograph and specific attributes
     - Required, determines if eligible for color or monochrome categories
 ##### Related DTO
 - UPhoto (required fields only)(not implemented)
+
+### Competition
+The Competition object defines the different competitions that take place and the various start and end dates
+#### Competition Attributes
+- Guid competitionId
+    - Required, PK for competition records, assigned at object creation
+- string name
+    - Required, name displayed in competition records, defined at object creation
+- string description
+    - Required, description for specific competition, defined at object creation
+- DateTime startEntryDate
+    - Required, start date for adding or updating entries
+- DateTime endEntryDate
+    - Required, end date for adding or updating entries
+- DateTime startJudgeDate
+    - Required, start date for adding or updating ratings and comments
+- DateTime endJudgeDate
+    - Required, end date for adding or updating ratings and comments
+- string tag
+    - Required, used for short-hand reference
+- List<Photo> entries
+    - Optional, created as photos are added
+- List<Member> judges
+    - Required, will be used to define who can rate entries
+##### Related DTO

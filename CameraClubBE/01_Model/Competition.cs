@@ -5,20 +5,27 @@ namespace CameraClubBE.Model;
 public class Competition
 {
     public Guid competitionId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public string Tag { get; set; }
+    public string name { get; set; }
+    public string description { get; set; }
+    public DateTime startEntryDate { get; set; }
+    public DateTime endEntryDate { get; set; }
+    public DateTime startJudgeDate { get; set; }
+    public DateTime endJudgeDate { get; set; }
+    public string tag { get; set; }
+    public List<Photo>? entries { get; set; }
+    public List<Member> judges { get; set; }
 
     public Competition() { }
-    public Competition(string _name, string _description, DateTime _startDate, DateTime _endDate, string _tag)
+    public Competition(string _name, string _description, DateTime _startEntryDate, DateTime _endEntryDate, DateTime _startJudgeDate, DateTime _endJudgeDate, string _tag, List<Member> _judges)
     {
-        Name = _name;
-        Description = _description;
-        StartDate = _startDate;
-        EndDate = _endDate;
-        Tag = _tag;
+        name = _name;
+        description = _description;
+        startEntryDate = _startEntryDate;
+        endEntryDate = _endEntryDate;
+        startJudgeDate = _startJudgeDate;
+        endJudgeDate = _endJudgeDate;
+        tag = _tag;
+        judges = _judges;
         competitionId = Guid.NewGuid();
     }
 }
