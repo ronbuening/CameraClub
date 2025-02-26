@@ -3,16 +3,22 @@
 This object contains all the member details including name, contact info, club information and role to determine access rights.
 #### Member Attributes
 - Guid memberId
+    - Internal Member ID
     - Required, will serve as PK for member records, set at account creation
 - string firstName
+    - First name
     - Required, will serve for publicly viewable author and judge records
 - string lastName
+    - Last name
     - Required, will serve for publicly viewable author and judge records
 - string email
+    - Member email
     - Required, needed for club records and contact/confirmation
 - string password
+    - Hashed password string
     - Required, will be hashed separately at account creation
 - int? role
+    - Integer role identifier
     - Optional, will default to least permissive
     - Permissions will go from 0 to 4 inclusive with most permissions given with lower number
         - 0: System Admin
@@ -28,15 +34,7 @@ This object contains all the member details including name, contact info, club i
             - Can view closed competitions and results
 - DateOnly? dateJoined
     - Date first active in club
-- string? phone
-- string? addressLine1
-- string? addressLine2
-- string? city
-- string? state
-- string? postalCode
-- string? country
-- DateOnly? dateBirth
-    - Only if really desired by club mgmt
+
 ##### Related DTO
 - CMember
     - Full member creation (all required and optional fields)
@@ -47,28 +45,55 @@ This object contains all the member details including name, contact info, club i
 This object defines an uploaded photograph and specific attributes
 #### Photo Attributes
 - Guid photoId
+    - Internal Photo ID
     - Required, will serve as PK for photo records, assigned at object creation
 - string filename
+    - Photo filename
     - Required, where the image is stored
 - Guid ownerId
+    - Internal Member ID for authorship
     - Required, FK for relation to member records, Guid for uploading member
 - string author
+    - First and last name of author
     - Required, display name for galleries and competitions. Derived from ownerId record
 - string title
+    - Photo title
     - Required, defined at upload
 - string? caption
+    - Photo caption
     - Optional, provides additional context for image
 - DateOnly? captureDate
+    - Date of image caption
+    - Optional
 - TimeOnly? captureTime
+    - Local time of image capture
+    - Optional
 - string? shutterSpeed
+    - Shutter speed used in photo
+    - Optional
 - string? aperture
+    - Aperture for photo
+    - Optional
 - int? ISO
+    - ISO used for photo
+    - Optional
 - double? exposureBias
+    - Exposure Compensation
+    - Optional
 - string? cameraMake
+    - Camera make (e.g. Nikon, Ricoh IMAGING COMPANY, LTD.)
+    - Optional
 - string? cameraModel
+    - Camera model (e.g. Z 7_2, GR III)
+    - Optional
 - string? lensMake
+    - Lens make (e.g. NIKKOR, Canon)
+    - Optional
 - string? lensModel
+    - Lens model (e.g. Z 24-70mm f/2.8 S)
+    - Optional
 - bool isColor
+    - Marker for if image is color or not
     - Required, determines if eligible for color or monochrome categories
 ##### Related DTO
 - UPhoto (required fields only)(not implemented)
@@ -77,10 +102,13 @@ This object defines an uploaded photograph and specific attributes
 The Competition object defines the different competitions that take place and the various start and end dates
 #### Competition Attributes
 - Guid competitionId
+    - Internal identifier for each competition
     - Required, PK for competition records, assigned at object creation
 - string name
+    - Competition name
     - Required, name displayed in competition records, defined at object creation
 - string description
+    - Competition description
     - Required, description for specific competition, defined at object creation
 - DateTime startEntryDate
     - Required, start date for adding or updating entries
