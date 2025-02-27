@@ -21,6 +21,7 @@ public class Photo
     public string? lensMake { get; set; }
     public string? lensModel { get; set; }
     public bool isColor { get; set; }
+    public bool isTheme { get; set; }
     public List<Competition>? competitions { get; set; }
     public List<Evaluation>? evaluations { get; set; }
 
@@ -33,8 +34,9 @@ public class Photo
         title = _title;
         photoId = Guid.NewGuid();
         isColor = true;
+        isTheme = false;
     }
-    public Photo(string _filename, Guid _ownerId, string _author, string _title, bool _isColor)
+    public Photo(string _filename, Guid _ownerId, string _author, string _title, bool _isColor, bool _isTheme)
     {
         filename = _filename;
         ownerId = _ownerId;
@@ -42,5 +44,6 @@ public class Photo
         title = _title;
         photoId = Guid.NewGuid();
         isColor = _isColor;
+        isTheme = _isTheme;
     }
 }

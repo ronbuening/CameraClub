@@ -95,6 +95,9 @@ This object defines an uploaded photograph and specific attributes
 - bool isColor
     - Marker for if image is color or not
     - Required, determines if eligible for color or monochrome categories
+- bool isTheme
+    - Marker for if the image is part of competition special theme or not
+    - Required, determines if eligible for special rules
 ##### Related DTO
 - UPhoto (required fields only)(not implemented)
 

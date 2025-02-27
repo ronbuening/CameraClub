@@ -64,9 +64,31 @@ public class MemberService : IMemberService
 
         return CryptographicOperations.FixedTimeEquals(comparisonHash, Convert.FromHexString(employee.Password));
     }
-    public Task<Member> UpdateMember(Member memberToUpdate);
-    public Task<Guid> UpdateMemberInfo(MemberUpdate memberInfoFromController);
-    public Task<Member> CreateNewMemberAsync(Member memberToCreateFromController);
+    public Task<Member> UpdateMember(Member memberToUpdate)
+    {
+        return _memberStorage.UpdateMemberAsync(memberToUpdate);
+    }
+    public Task<Guid> UpdateMemberInfo(MemberUpdate memberInfoFromController)
+    {
+        return _memberStorage.UpdateMemberInfoAsync(memberInfoFromController);
+    }
+    public async Task<Member> CreateNewMemberAsync(Member memberToCreateFromController)
+    {
+        if await MemberExistsAsync(memberToCreateFromController.email)
+        {
+            throw new Exception("Member already exists");
+        }
+        if String.IsNullOrEmpty(memberToCreateFromController.email) || String.IsNullOrEmpty(memberToCreateFromController.firstName) || String.IsNullOrEmpty(memberToCreateFromController.lastName)
+        {
+            throw new Exception("Member must have email, first name, and last name");
+        }
+        if String.IsNullOrEmpty(memberToCreateFromController.password)
+        {
+            throw new Exception("Member must have a password");
+        }
+        await _memberStorage.CreateMemberAsync(memberToCreateFromController);
+        return memberToCreateFromController;
+    }
     public Task<List<PMember>> GetAllMembersFromService();
     public Task<List<PMember>> GetAllJudgesFromService();
     public Task<bool> MemberExistsAsync(string email);
